@@ -56,7 +56,7 @@ def ping_until_UP(ip):
                 print("Seems like  device isn't connected to PC.")
                 return False
         else:
-            sleep(5)
+            sleep(10)
             print("\nHost is UP")
             return ip
 

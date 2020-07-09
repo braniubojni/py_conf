@@ -4,10 +4,10 @@ from ping_up import ping_until_UP
 
 
 def ask_question(question=False):
-	question = input("Do you want to send commands to your device by Telnet?(By default 'no')\n")
-	if "yes" == question.lower():
+	question = input("Do you want to send commands to your device by Telnet?(By default 'no')\n([y]/n)\n")
+	if "yes" == question.lower() or 'y' == question.lower():
 		return True
-	elif "no" == question.lower():
+	elif "no" == question.lower() or "n" == question.lower():
 		return False
 	else:
 		print("You wrote neither than 'yes' or 'no'. I'll accept that as 'no'\n")
@@ -25,26 +25,17 @@ def def_command(ip):
 		tn.write(user.encode('ascii') + b'\n')
 		tn.read_until(b'Password: ')
 		tn.write(passwd.encode('ascii') + b"\n")
-		comand = input("Which command: \n\t")
-		while comand != 0:
+		comand = True
+		while comand != '':
+			comand = input("Which command: \n\t")
 			tn.write(comand.encode('ascii') + b'\n')
+			print(tn.read_very_eager().decode('utf-8'))
 
 		return print(tn.read_all().decode('ascii'))
 	else:
 		print("\nDone")
 		return False
 
-
-	# else:
-	# 	user = input("\nType login name: ")
-	# 	passwd = getpass.getpass()
-	# 	tn = telnetlib.Telnet(ip)
-	# 	tn.read_until(b'Login: ')
-	# 	tn.write(user.encode('ascii') + b'\n')
-	# 	tn.read_until(b'Password: ')
-	# 	tn.write(passwd.encode('ascii') + b"\n")
-	# 	tn.write(b"fdefault save\n")
-	# 	tn.write(b"exit\n")
 
 	
 
