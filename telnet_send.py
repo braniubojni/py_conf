@@ -4,6 +4,9 @@ from ping_up import ping_until_UP
 
 
 def ask_question(question=False):
+	'''
+	Function ask's for about sending commands by Telnet
+	'''
 	question = input("Do you want to send commands to your device by Telnet?(By default 'no')\n([y]/n)\n")
 	if "yes" == question.lower() or 'y' == question.lower():
 		return True
@@ -25,13 +28,10 @@ def def_command(ip):
 		tn.write(user.encode('ascii') + b'\n')
 		tn.read_until(b'Password: ')
 		tn.write(passwd.encode('ascii') + b"\n")
-		comand = True
-		while comand != '':
-			comand = input("Which command: \n\t")
-			tn.write(comand.encode('ascii') + b'\n')
-			print(tn.read_very_eager().decode('utf-8'))
+		tn.write("fdefault save\n")
+		tn.write("exit\n")
 
-		return print(tn.read_all().decode('ascii'))
+		return tn.read_all().decode('ascii')
 	else:
 		print("\nDone")
 		return False
