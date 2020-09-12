@@ -43,6 +43,11 @@ def host_UP(HOST):
         return False
 
 def ping_until_UP(ip):
+    '''
+        Function sending ping request after file/config/firmware was sent 
+        and if device is responding then it will return "Host is ip", 
+        otherwise "Seems like  device isn't connected to PC."
+    '''
     if not ip:
         print("\nThe host is unavailable after sending the file\n")
     else:
