@@ -18,6 +18,9 @@ def ask_question(question=False):
 
 # after reboot we'll send comand by Telnet
 def def_command(ip):
+	'''
+	Sending commands to device via Telnet(23)
+	'''
 	if not ip:
 		return print("\nThe host is unavailable after sending the file*")
 	if ask_question():
