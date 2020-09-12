@@ -5,7 +5,7 @@ from time import sleep
 
 def check_valid_ip():
     """ 
-    Function need check is IP valid, blank will return default
+    Function is looking for valid IP and checking is IP is up, blank will return default
     IP which is 192.168.1.1
     """
     HOST = input("Your host IP(empty string is 192.168.1.1): ")
