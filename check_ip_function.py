@@ -1,6 +1,7 @@
 import ipaddress
 
 def check_ip(ip):
+	'''This function is checking for valid IP address'''
 	try:
 		ipaddress.ip_address(ip)
 		return True
